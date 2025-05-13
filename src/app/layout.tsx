@@ -25,8 +25,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-<body className={cn(
+    <html lang="en" suppressHydrationWarning><body className={cn(
         "min-h-screen bg-background font-sans antialiased",
         geistSans.variable,
         geistMono.variable
@@ -36,4 +35,3 @@ export default function RootLayout({
     </html>
   );
 }
-
