@@ -33,11 +33,38 @@ export function TopBar() {
     let currentPath = '';
     pathSegments.forEach(segment => {
       currentPath += `/${segment}`;
-      breadcrumbs.push({
-        label: segment.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' '),
-        href: currentPath
-      });
+      // Avoid duplicating the "Home" breadcrumb if the current path is also /dashboard
+      if (currentPath === '/dashboard' && breadcrumbs.length === 1 && breadcrumbs[0].href === '/dashboard') {
+        // Potentially update the label of the first breadcrumb if needed, or just skip adding.
+        // For now, let's assume the first "Home -> /dashboard" is sufficient if path is just /dashboard
+        // Or, ensure the label for the specific segment is different.
+        // The issue is the key, so if href is the same, label should be different or key needs index.
+        // Let's assume the first item is fine and we only add subsequent different segments.
+        if (segment.toLowerCase() !== 'dashboard') { // A more robust check might be needed
+             breadcrumbs.push({
+                label: segment.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' '),
+                href: currentPath
+            });
+        } else if (breadcrumbs.length > 0 && breadcrumbs[breadcrumbs.length-1].href !== currentPath) {
+           // If path is /dashboard/something, then 'Dashboard' segment itself should be added.
+            breadcrumbs.push({
+                label: segment.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' '),
+                href: currentPath
+            });
+        }
+
+      } else {
+         breadcrumbs.push({
+            label: segment.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' '),
+            href: currentPath
+        });
+      }
     });
+    // Remove duplicate /dashboard if the path starts with /dashboard
+    if (breadcrumbs.length > 1 && breadcrumbs[0].href === breadcrumbs[1].href) {
+        breadcrumbs.splice(0,1);
+    }
+
     return breadcrumbs;
   };
 
@@ -57,7 +84,7 @@ export function TopBar() {
         <nav aria-label="Breadcrumb" className="hidden md:flex items-center text-sm">
           <ol role="list" className="flex items-center space-x-1">
             {breadcrumbs.map((crumb, index) => (
-              <li key={crumb.href}>
+              <li key={`${crumb.href}-${index}`}> {/* Ensure unique key by appending index */}
                 <div className="flex items-center">
                   {index > 0 && <ChevronRight className="h-4 w-4 shrink-0 text-muted-foreground" />}
                   <Link
