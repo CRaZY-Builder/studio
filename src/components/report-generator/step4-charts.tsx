@@ -7,12 +7,12 @@ import { useForm, Controller } from "react-hook-form";
 import * as z from "zod";
 
 import { Button } from "@/components/ui/button";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage, FormDescription } from "@/components/ui/form";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
-import { BarChart, LineChart, PieChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Pie, Cell } from 'recharts';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../ui/card";
+import { BarChart, LineChart, PieChart as RechartsPieChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Pie, Cell } from 'recharts'; // Renamed PieChart to avoid conflict
+import { Card, CardContent, CardDescription as ShadcnCardDescription, CardHeader, CardTitle } from "../ui/card"; // Renamed CardDescription
 
 
 const chartConfigSchema = z.object({
@@ -86,7 +86,7 @@ export function ReportStep4Charts() {
       case 'pie':
         return (
           <ResponsiveContainer width="100%" height={300}>
-            <PieChart>
+            <RechartsPieChart>
               <Pie
                 data={mockChartData}
                 cx="50%"
@@ -104,7 +104,7 @@ export function ReportStep4Charts() {
               </Pie>
               <Tooltip />
               <Legend />
-            </PieChart>
+            </RechartsPieChart>
           </ResponsiveContainer>
         );
       default:
@@ -239,7 +239,7 @@ export function ReportStep4Charts() {
       <Card className="shadow-md">
         <CardHeader>
             <CardTitle>Live Chart Preview</CardTitle>
-            <CardDescription>This is a sample representation of your selected chart.</CardDescription>
+            <ShadcnCardDescription>This is a sample representation of your selected chart.</ShadcnCardDescription>
         </CardHeader>
         <CardContent className="h-[350px] flex items-center justify-center border rounded-md p-4 bg-muted/20">
             {renderChartPreview()}
@@ -248,3 +248,4 @@ export function ReportStep4Charts() {
     </div>
   );
 }
+
