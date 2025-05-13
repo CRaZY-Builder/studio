@@ -1,4 +1,3 @@
-
 import type {Metadata} from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
@@ -25,15 +24,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head />
-      <body className={cn(
+    <html lang="en" suppressHydrationWarning><head /><body className={cn(
         "min-h-screen bg-background font-sans antialiased",
         geistSans.variable,
         geistMono.variable
       )}>
         {children}
-      </body>
-    </html>
+      </body></html>
   );
 }
