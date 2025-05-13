@@ -1,4 +1,5 @@
 
+
 "use client";
 
 import * as React from "react";
@@ -11,7 +12,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage, FormDes
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
-import { BarChart, LineChart, PieChart as RechartsPieChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Pie, Cell } from 'recharts'; // Renamed PieChart to avoid conflict
+import { BarChart, LineChart, PieChart as RechartsPieChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Pie, Cell, Line } from 'recharts'; // Renamed PieChart to avoid conflict, Added Line
 import { Card, CardContent, CardDescription as ShadcnCardDescription, CardHeader, CardTitle } from "../ui/card"; // Renamed CardDescription
 
 
