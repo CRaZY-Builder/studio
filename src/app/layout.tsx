@@ -25,7 +25,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning> {/* Added suppressHydrationWarning for potential theme/date issues */}
+    <html lang="en" suppressHydrationWarning>
       <body className={cn(
         "min-h-screen bg-background font-sans antialiased",
         geistSans.variable,
@@ -36,3 +36,4 @@ export default function RootLayout({
     </html>
   );
 }
+
