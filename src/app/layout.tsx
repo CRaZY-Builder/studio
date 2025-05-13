@@ -1,15 +1,15 @@
 
 import type {Metadata} from 'next';
-import { Geist, Geist_Mono } from 'next/font/google'; // Corrected import for Geist
+import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import { cn } from '@/lib/utils';
 
-const geistSans = Geist({ // Corrected instantiation
+const geistSans = Geist({
   variable: '--font-geist-sans',
   subsets: ['latin'],
 });
 
-const geistMono = Geist_Mono({ // Corrected instantiation
+const geistMono = Geist_Mono({
   variable: '--font-geist-mono',
   subsets: ['latin'],
 });
@@ -36,4 +36,3 @@ export default function RootLayout({
     </html>
   );
 }
-
